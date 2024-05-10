@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
 
 import './index.css'
 
@@ -23,7 +23,10 @@ export default function App() {
     show: { opacity: 1 }
   }
 
-
+  const { scrollYProgress } = useScroll()
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.2])
+  const y = useTransform(scrollYProgress, [0, 1], [0, 500])
+  console.log(scrollYProgress)
 
  return (
 
@@ -31,13 +34,15 @@ export default function App() {
     <div className="flex flex-wrap bg-gray-900 text-white h-full text-xl">
 
       <motion.div 
+        className="flex flex-grow flex-wrap bg-white text-black items-center m-8 p-8 z-10"
         animate={{ backgroundColor: ["#FFFFFF", "#999", "#FFFFFF"] }}
         transition={{
           type: "tween",
           ease: "easeInOut",
           repeat: Infinity, 
           duration: 10 }}
-        className="flex flex-grow flex-wrap bg-white text-black items-center m-8 p-8">
+        style={{ scale, y }}
+        >
         DIV 1
         <motion.div 
           animate={{ 
@@ -53,9 +58,10 @@ export default function App() {
         DIV 1.1 
         </motion.div>
 
-        <div className="flex flew-grow bg-yellow-500 items-center justify-center m-4 p-4 w-full">
+        <motion.div className="flex flew-grow bg-yellow-500 items-center justify-center m-4 p-4 w-full"
+        >
         DIV 1.2 
-        </div>
+        </motion.div>
 
         <div className="flex flew-grow bg-blue-500 items-center justify-center m-4 p-4 w-full">
         DIV 1.3 
@@ -66,7 +72,7 @@ export default function App() {
         </div>
       </motion.div>
 
-      <motion.div className="flex flex-wrap bg-yellow-500 text-black items-center p-10 m-8 min-w-[100px]"
+      <motion.div className="flex flex-wrap bg-yellow-500 text-black items-center p-10 m-8 min-w-[100px] z-20"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ 
