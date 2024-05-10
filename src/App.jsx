@@ -75,8 +75,11 @@ export default function App() {
       <div className="flex bg-lime-500 text-black items-center justify-center p-2 m-8">
         DIV 8  
       </div>
-      <div className="flex flex-grow bg-pink-500 text-black items-center justify-center p-2 m-8">
-        DIV 9  
+      <div className="flex flex-grow bg-pink-500 text-black items-center justify-center p-6 m-8">
+        DIV 9 
+        <div className="flex bg-green-500 items-center justify-center h-full w-full">
+        DIV 9.1 
+        </div> 
       </div>
       <div className="flex flex-grow bg-teal-500 text-black items-center justify-center p-2 m-8">
         DIV 10  
