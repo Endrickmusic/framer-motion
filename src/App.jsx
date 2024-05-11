@@ -10,7 +10,9 @@ export default function App() {
 
   <>
     <div>
-      <Div />
+    {[1, 2, 3, 4, 5].map((index) => (
+    <Div index={index} />
+))}
     </div>
   </>
   
@@ -21,10 +23,10 @@ function useParallax(value, distance) {
   return useTransform(value, [0, 1], [-distance, distance]);
 }
 
-function Div(){
+function Div({index}){
   
   const ref = useRef(null)
-  const { scrollYProgress } = useScroll({target: ref})
+  const { scrollYProgress } = useScroll({ target: ref} )
   const y = useParallax(scrollYProgress, 300)
 
   return (
@@ -32,11 +34,11 @@ function Div(){
     >
       <div 
         ref={ref}
-        className="relative w-[300px] h-[400px] bg-white text-black m-20 overflow-hidden z-10"
+        className="relative w-[300px] h-[400px] bg-white text-black m-20 z-10"
         >
-        DIV 1
+        DIV {index}
       </div>
-      <motion.h2 style={{ y }}>{`#001`}</motion.h2>
+      <motion.h2 style={{ y }}>{`#00${index}`}</motion.h2>
     
     </section>
   )
