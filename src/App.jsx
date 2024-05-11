@@ -30,7 +30,7 @@ function Div({index}){
   const y = useParallax(scrollYProgress, 300)
 
   return (
-    <section className="h-screen flex justify-content items-center relative scroll-snap-center perspective-500 bg-gray-900 text-white text-xl"
+    <section className="h-screen flex flex-col justify-center items-center relative scroll-snap-center perspective-500 bg-gray-900 text-white text-xl"
     >
       <div 
         ref={ref}
