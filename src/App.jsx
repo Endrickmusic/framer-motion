@@ -13,19 +13,25 @@ export default function App() {
 
   return (
     <>
-      <div className="h-screen w-full overflow-auto scroll-snap-y-mandatory pb-20">
-        {/* Map over the slowDivs array to create the slow divs */}
-        {slowDivs.map((_, index) => (
-          <Div index={index} speed="slow" key={index} />
-        ))}
-        {/* Map over the normalDivs array to create the normal divs */}
-        {normalDivs.map((_, index) => (
-          <Div index={index} speed="normal" key={index} />
-        ))}
-        {/* Map over the fastDivs array to create the fast divs */}
-        {fastDivs.map((_, index) => (
-          <Div index={index} speed="fast" key={index} />
-        ))}
+      <div className="flex h-[500vh]">
+        {/* Create a column for the slow divs */}
+        <div className="flex flex-col flex-grow">
+          {slowDivs.map((_, index) => (
+            <Div index={index} speed="slow" key={index} />
+          ))}
+        </div>
+        {/* Create a column for the normal divs */}
+        <div className="flex flex-col flex-grow">
+          {normalDivs.map((_, index) => (
+            <Div index={index} speed="normal" key={index} />
+          ))}
+        </div>
+        {/* Create a column for the fast divs */}
+        <div className="flex flex-col flex-grow h-[500vh]">
+          {fastDivs.map((_, index) => (
+            <Div index={index} speed="fast" key={index} />
+          ))}
+        </div>
       </div>
     </>
   );
